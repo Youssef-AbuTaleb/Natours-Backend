@@ -22,8 +22,5 @@ app.use(morgan('dev'));
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
-// 4) START SERVER
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Running on port ${port}`);
-});
+
+module.exports = app;
