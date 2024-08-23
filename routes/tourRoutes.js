@@ -8,12 +8,16 @@ const {
   updateTour,
   deleteTour,
   checkId,
+  checkBody,
 } = tourController;
 
 // this middleware will only executed for requests that hits tours/:id
 router.param('id', checkId);
 
-router.route('/').get(getAllTours).post(createTour);
+router
+  .route('/')
+  .get(getAllTours)
+  .post(checkBody, createTour);
 router
   .route('/:id')
   .get(getTour)
