@@ -1,4 +1,5 @@
 const express = require('express');
+
 const morgan = require('morgan');
 
 const tourRouter = require('./routes/tourRoutes');
@@ -17,7 +18,10 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
-app.use(morgan('dev'));
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 // 3) ROUTES
 
